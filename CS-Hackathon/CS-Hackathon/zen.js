@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', () => {
+
 // block social media sites while timer is on
 switch (window.location.hostname) {
     case 'www.youtube.com':
@@ -17,7 +19,6 @@ switch (window.location.hostname) {
         break;
 }
 
-// document.addEventListener('DOMContentLoaded', () => {
 // grab button to listen for click
 const btn = document.getElementById('btn');
 let time = null;
@@ -26,6 +27,7 @@ let intervalHandle;
 let quoteText = '';
 let quoteAuthor = '';
 
+console.log(btn);
 // set time property of timer after getting user input
 btn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -104,3 +106,5 @@ function quoteGenerator() {
 }
 
 console.log(quoteGenerator());
+
+});
