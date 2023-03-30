@@ -11,7 +11,6 @@ class Timer {
         // convert ms to mins
         // this.time = this.time * 60000;
         // set timer
-
         // let container = document.getElementById('container');
         // container.style.display = 'none';
         this.mySeconds = this.time * 60;
@@ -21,6 +20,7 @@ class Timer {
         //     // change display to flex once timer runs out
         //     alert("timer");
         // }, this.time)
+
 
     }
 

@@ -16,5 +16,10 @@
                 "zen.js"
             ]
         }
+    ],
+    "host_permissions": [
+        "https://www.youtube.com/*",
+        "https://www.facebook.com/*",
+        "https://www.netflix.com/*"
     ]
 }
