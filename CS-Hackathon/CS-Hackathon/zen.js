@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // set time property of timer after getting user input
     btn.addEventListener('click', () => {
         timer.time = Number(document.getElementById('time').value);
-        timer.setTime();
+
     })
+timer.setTime();
+
+   
 });
