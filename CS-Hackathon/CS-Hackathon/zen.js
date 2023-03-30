@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-
 // block social media sites while timer is on
 switch (window.location.hostname) {
     case 'www.youtube.com':
@@ -18,6 +16,8 @@ switch (window.location.hostname) {
         document.body.innerHTML = '<button>NO TIKTOK</button>';
         break;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
 
 // grab button to listen for click
 const btn = document.getElementById('btn');
