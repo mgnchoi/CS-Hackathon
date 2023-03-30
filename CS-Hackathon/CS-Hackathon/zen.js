@@ -17,17 +17,90 @@ switch (window.location.hostname) {
         break;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // grab button to listen for click
-    const btn = document.getElementById('btn');
-    const timer = new Timer();
+// document.addEventListener('DOMContentLoaded', () => {
+// grab button to listen for click
+const btn = document.getElementById('btn');
+let time = null;
+let mySeconds;
+let intervalHandle;
+let quoteText = '';
+let quoteAuthor = '';
 
-    // set time property of timer after getting user input
-    btn.addEventListener('click', () => {
-        timer.time = Number(document.getElementById('time').value);
+// set time property of timer after getting user input
+btn.addEventListener('click', (e) => {
+    e.preventDefault();
 
-    })
-timer.setTime();
+    time = Number(document.getElementById('time').value);
+    mySeconds = time * 60;
+    intervalHandle = setInterval(tick, 1000);
+})
 
-   
-});
+
+
+function tick() {
+
+    let timeDisplay = document.getElementById('countdown');
+    let container = document.getElementById('container');
+    let timeInput = document.getElementById('time');
+    let button = document.getElementById('btn');
+    let smallPanda = document.getElementById('panda-1');
+    let bigPanda = document.getElementById('panda-2');
+
+    timeInput.style.display = "none";
+    button.style.display = "none";
+    smallPanda.style.display = 'none';
+    bigPanda.style.display = 'flex';
+    timeDisplay.style.fontSize = "50px";
+
+    container.appendChild(timeDisplay);
+
+
+    let min = Math.floor(mySeconds / 60);
+    let sec = mySeconds - (min * 60);
+
+
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+
+    let message = min.toString() + ":" + sec;
+    timeDisplay.innerHTML = message;
+
+    if (mySeconds === 0) {
+        quoteGenerator()
+        alert(`${quoteText} - ${quoteAuthor}`);
+        clearInterval(intervalHandle);
+        timeDisplay.style.display = "none";
+        timeInput.style.display = "flex";
+        button.style.display = "flex";
+        smallPanda.style.display = 'flex';
+        bigPanda.style.display = 'none';
+
+
+    }
+
+    mySeconds--;
+
+}
+
+
+
+function quoteGenerator() {
+    let response = fetch("https://type.fit/api/quotes")
+        .then(function (response) {
+            return response.json();
+        })
+        //.then(function (data) { console.log(data) })
+        .then(function (data) {
+            //let keys = Object.keys(data);
+            let index = Math.floor((Math.random() * data.length));
+            let quote = data[index];
+            quoteText = quote.text;
+            console.log(quote.text);
+            quoteAuthor = quote.author;
+            console.log(quote.author)
+        })
+
+}
+
+console.log(quoteGenerator());
