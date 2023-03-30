@@ -11,7 +11,7 @@ class Timer {
         // set timer
         setTimeout(() => {
             // change display to flex once timer runs out
-            alert("timer");
+            alert("you set the time");
         }, this.time)
     }
 }
